@@ -9,7 +9,10 @@ public class IfElseStatementTheme {
         boolean male = true;
         double height = 2.2;
 
-        if (age > 20) {
+        final int AGE_LIMIT = 20;
+        final double HEIGHT_LIMIT = 1.8;
+
+        if (age > AGE_LIMIT) {
             System.out.println("Добро пожаловать в нашу спортивную школу для взрослых");
         } else {
             System.out.println("Добро пожаловать в нашу детскую спортивную школу");
@@ -19,7 +22,7 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Мужская раздевалка расположена справа");
         }
-        if (height < 1.80) {
+        if (height < HEIGHT_LIMIT) {
             System.out.println("Выбирайте любую понравившуюся вам секцию");
         } else {
             System.out.println("Рекомендуем вам заняться баскетболом");
@@ -36,13 +39,13 @@ public class IfElseStatementTheme {
 
         System.out.println("\n2. Поиск max и min числа");
         // Генерирует рандомное целое число в диапазоне [-50; 50)
-        int num1 = (int) (Math.random() * 100 - 50);
-        int num2 = (int) (Math.random() * 100 - 50);
+        int number1 = (int) (Math.random() * 100 - 50);
+        int number2 = (int) (Math.random() * 100 - 50);
 
-        if (num1 < num2) {
-            System.out.println("min = " + num1 + "\nmax = " + num2);
-        } else if (num1 > num2) {
-            System.out.println("min = " + num2 + "\nmax = " + num1);
+        if (number1 < number2) {
+            System.out.println("min = " + number1 + "\nmax = " + number2);
+        } else if (number1 > number2) {
+            System.out.println("min = " + number2 + "\nmax = " + number1);
         } else {
             System.out.println("Значения равны");
         }
@@ -50,47 +53,46 @@ public class IfElseStatementTheme {
 
         System.out.println("\n3. Проверка числа");
         // Генерирует рандомное целое число в диапазоне [-50; 50)
-        int number = (int) (Math.random() * 100 - 50);
-        ;
+        int randomNumber = (int) (Math.random() * 100 - 50);
 
-        System.out.println("Выбранное число равно " + number);
-        if (number != 0) {
-            String property1 = (number % 2 == 0) ? "четным" : "нечетным";
-            String property2 = (number > 0) ? "положительным" : "отрицательным";
+        System.out.println("Выбранное число равно " + randomNumber);
+        if (randomNumber != 0) {
+            String property1 = (randomNumber % 2 == 0) ? "четным" : "нечетным";
+            String property2 = (randomNumber > 0) ? "положительным" : "отрицательным";
             System.out.println("Оно является " + property1 + " и " + property2);
         }
 
 
         System.out.println("\n4. Поиск одинаковых цифр в числах");
         // Генерирует рандомное целое число в диапазоне [100; 999]
-        int number1 = (int) (Math.random() * 900 + 100);
-        int number2 = (int) (Math.random() * 900 + 100);
+        int targetNumber1 = (int) (Math.random() * 900 + 100);
+        int targetNumber2 = (int) (Math.random() * 900 + 100);
         System.out.printf("Исходные числа: %d и %d\n", number1, number2);
 
-        int numberHundreds1 = number1 / 100;
-        int numberHundreds2 = number2 / 100;
-        int numberTens1 = (number1 / 10) % 10;
-        int numberTens2 = (number2 / 10) % 10;
-        int numberUnits1 = number1 % 10;
-        int numberUnits2 = number2 % 10;
+        int numberHundreds1 = targetNumber1 / 100;
+        int numberHundreds2 = targetNumber2 / 100;
+        int numberTens1 = (targetNumber1 / 10) % 10;
+        int numberTens2 = (targetNumber2 / 10) % 10;
+        int numberUnits1 = targetNumber1 % 10;
+        int numberUnits2 = targetNumber2 % 10;
 
-        // Создадим маркер, которые будет указывать на наличие одинаковых цифр в числах. Начальное значение Fasle
+        // Создадим маркер, которые будет указывать на наличие одинаковых цифр в числах
         boolean haveSameDigits = false;
 
         if (numberHundreds1 == numberHundreds2) {
-            System.out.println("Числа содержать одинаковое количество сотен: " + numberHundreds1);
+            System.out.println("Числа содержат одинаковое количество сотен: " + numberHundreds1);
             haveSameDigits = true;
         }
         if (numberTens1 == numberTens2) {
-            System.out.println("Числа содержать одинаковое количество десятков: " + numberTens1);
+            System.out.println("Числа содержат одинаковое количество десятков: " + numberTens1);
             haveSameDigits = true;
         }
         if (numberUnits1 == numberUnits2) {
-            System.out.println("Числа содержать одинаковое количество единиц: " + numberUnits1);
+            System.out.println("Числа содержат одинаковое количество единиц: " + numberUnits1);
             haveSameDigits = true;
         }
         if (!haveSameDigits) {
-            System.out.println("Числа не содержать одинаковых цифр, стоящих в одном и том же разряде");
+            System.out.println("Числа не содержат одинаковых цифр, стоящих в одном и том же разряде");
         }
 
 
@@ -138,7 +140,8 @@ public class IfElseStatementTheme {
         double averageGrades = (double) (historyGrade + programmingGrade) / 2;
         int averagePercents = (historyPercent + programmingPercent) / 2;
 
-        System.out.printf("Оценки по предметам:\n%d - история\n%d - программирование\n", historyGrade, programmingGrade);
+        System.out.printf("Оценки по предметам:\n%d - история\n%d - программирование\n",
+                historyGrade, programmingGrade);
         System.out.printf("%.2f - средний балл\n", averageGrades);
         System.out.printf("%d - средний процент\n", averagePercents);
 
@@ -197,7 +200,8 @@ public class IfElseStatementTheme {
                         targetBillsOf100, targetBillsOf10, targetBillsOf1);
                 System.out.println("Итого в выдаче: " + total + " USD");
             } else {
-                System.out.printf("Имеющимися в банкомате купюрами нельзя получить " + (total + requiredAmount) + " USD");
+                System.out.printf("Имеющимися в банкомате купюрами нельзя получить " +
+                        (total + requiredAmount) + " USD");
             }
         }
     }
