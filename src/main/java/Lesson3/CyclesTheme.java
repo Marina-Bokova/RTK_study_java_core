@@ -93,23 +93,23 @@ public class CyclesTheme {
 
         System.out.println("\n6. Отображение геометрических фигур");
         // Прямоугольник из *
-        char char1 = '*';
+        char rectangleChar = '*';
         int sizeRectangle = 5;
         for (int i = 0; i < sizeRectangle; i++) {
             for (int j = 0; j < sizeRectangle * 2; j++) {
-                System.out.print(char1);
+                System.out.print(rectangleChar);
             }
             System.out.print("\n");
         }
         System.out.print("\n");
 
         // Прямоугольный треугольник из #
-        char char2 = '#';
+        char triangleChar1 = '#';
         int triangleLines = 5;
         while (triangleLines > 0) {
             int count = 0;
             while (count++ < triangleLines) {
-                System.out.print(char2);
+                System.out.print(triangleChar1);
             }
             System.out.print("\n");
             triangleLines--;
@@ -117,14 +117,14 @@ public class CyclesTheme {
         System.out.print("\n");
 
         // Равнобедренный треугольник из &
-        char char3 = '&';
+        char triangleChar2 = '&';
         int heightTriangle = 3;
         String triangle = "";
         do {
             int length = 0;
             String line = "";
             do {
-                line += char3;
+                line += triangleChar2;
             } while (++length < heightTriangle);
             line += "\n";
             if (triangle.isEmpty()) {
@@ -140,7 +140,7 @@ public class CyclesTheme {
         //Создание строки заголовка
         System.out.println("DECIMAL   CHARACTER   DESCRIPTION");
 
-        // Определяем диапазон символов соглазно ТЗ: от 15 до цифр
+        // Определяем диапазон символов согласно ТЗ: от 15 до цифр
         int symbolCode = 15;
         int numberCode = '0';
 
