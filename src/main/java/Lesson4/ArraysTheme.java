@@ -21,7 +21,7 @@ public class ArraysTheme {
         final int MIN_LENGTH_WORD = 5;
         String[] wordsForTask2 = BuildStringArray(WORDS_COUNT);
         int wordNumber = 0;
-        System.out.println("Список слов длинее 5 символов:");
+        System.out.println("Список слов длиннее 5 символов:");
         for (String word : wordsForTask2) {
             if (word.length() > MIN_LENGTH_WORD) {
                 System.out.printf("%d. %s%n", ++wordNumber, word);
@@ -252,7 +252,6 @@ public class ArraysTheme {
         int[][] numbers = BuildRandomIntMatrix(rows, cols, minValue, maxValue, printArray);
         return numbers;
     }
-
 
     // Математические функции
     private static int SumArrayElements(int[] array) {
