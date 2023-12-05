@@ -8,9 +8,9 @@ public class ArraysTheme {
         // Задача №1
         System.out.println("1. Создайте массив целых чисел и найдите его сумму");
         final int LENGTH = 5;
-        int[] randomIntArray = BuildRandomIntArray(LENGTH);
+        int[] randomIntArray = buildRandomIntArray(LENGTH);
 
-        int sumNumbers = SumArrayElements(randomIntArray);
+        int sumNumbers = sumArrayElements(randomIntArray);
         System.out.println("Сумма элементов массива равна " + sumNumbers);
 
 
@@ -19,9 +19,9 @@ public class ArraysTheme {
                 "у которых длина больше 5 символов");
         final int WORDS_COUNT = 7;
         final int MIN_LENGTH_WORD = 5;
-        String[] wordsForTask2 = BuildStringArray(WORDS_COUNT);
+        String[] wordsForTask2 = buildStringArray(WORDS_COUNT);
+        System.out.printf("Список слов длиннее %d символов:%n", MIN_LENGTH_WORD);
         int wordNumber = 0;
-        System.out.println("Список слов длиннее 5 символов:");
         for (String word : wordsForTask2) {
             if (word.length() > MIN_LENGTH_WORD) {
                 System.out.printf("%d. %s%n", ++wordNumber, word);
@@ -36,11 +36,9 @@ public class ArraysTheme {
         System.out.println("\n3. Создайте массив целых чисел и найдите минимальное" +
                 " и максимальное значение в нем");
         final int ARRAY_LENGTH = 13;
-        randomIntArray = BuildRandomIntArray(ARRAY_LENGTH);
-        int minNumber = MinElementArray(randomIntArray);
-        int maxNumber = MaxElementArray(randomIntArray);
-        System.out.println("Минимальное значение в массиве = " + minNumber);
-        System.out.println("Максимальное значение в массиве = " + maxNumber);
+        randomIntArray = buildRandomIntArray(ARRAY_LENGTH);
+        System.out.println("Минимальное значение в массиве = " + minElementArray(randomIntArray));
+        System.out.println("Максимальное значение в массиве = " + maxElementArray(randomIntArray));
 
 
         // Задача №4
@@ -72,10 +70,10 @@ public class ArraysTheme {
         System.out.println("\n5. Создайте двумерный массив и выведите на экран сумму каждой строки");
         final int ROWS_COUNT = 3;
         final int COLS_COUNT = 5;
-        int[][] randomIntMatrix = BuildRandomIntMatrix(ROWS_COUNT, COLS_COUNT);
+        int[][] randomIntMatrix = buildRandomIntMatrix(ROWS_COUNT, COLS_COUNT);
 
         for (int i = 0; i < ROWS_COUNT; i++) {
-            int rowSum = SumArrayElements(randomIntMatrix[i]);
+            int rowSum = sumArrayElements(randomIntMatrix[i]);
             System.out.printf("Сумма чисел в %d-й строке равна %d%n", (i + 1), rowSum);
         }
 
@@ -83,7 +81,7 @@ public class ArraysTheme {
         // Задача №6
         System.out.println("\n6. Создайте двумерный массив и найдите наименьший элемент в каждом столбце");
         // Размеры массива будут взяты из предыдущего задания
-        randomIntMatrix = BuildRandomIntMatrix(ROWS_COUNT, COLS_COUNT);
+        randomIntMatrix = buildRandomIntMatrix(ROWS_COUNT, COLS_COUNT);
 
         int minNumInRow;
         for (int i = 0; i < COLS_COUNT; i++) {
@@ -128,8 +126,10 @@ public class ArraysTheme {
         int arrayLength = inconsistentLengthArray.length;
         double[] arrayAverageValues = new double[arrayLength];
         for (int i = 0; i < arrayAverageValues.length; i++) {
-            arrayAverageValues[i] = SumArrayElements(inconsistentLengthArray[i]) /
-                    (double) inconsistentLengthArray[i].length;
+            if (inconsistentLengthArray[i].length > 0) {
+                arrayAverageValues[i] = sumArrayElements(inconsistentLengthArray[i]) /
+                        (double) inconsistentLengthArray[i].length;
+            }
         }
         System.out.println(Arrays.toString(arrayAverageValues));
 
@@ -143,13 +143,13 @@ public class ArraysTheme {
         final int MAX_VALUE = 100;
         // Создадим массив, определяеющий длины элементов в неравномерном массиве
         // По заданию подмассивы могут содержать от 3 до 10 элементов включительно
-        int[] subarrayLengths = BuildRandomIntArray(SUBARRAY_COUNT, MIN_ARRAY_LENGTH, MAX_ARRAY_LENGTH, false);
+        int[] subarrayLengths = buildRandomIntArray(SUBARRAY_COUNT, MIN_ARRAY_LENGTH, MAX_ARRAY_LENGTH, false);
 
         // Создадим неравномерный массив
         int[][] irregularArray = new int[SUBARRAY_COUNT][];
         for (int i = 0; i < SUBARRAY_COUNT; i++) {
             // Создадим подмассив случайных чисел в диапозоне от -100 до 100
-            int[] array = BuildRandomIntArray(subarrayLengths[i], MIN_VALUE, MAX_VALUE, false);
+            int[] array = buildRandomIntArray(subarrayLengths[i], MIN_VALUE, MAX_VALUE, false);
             irregularArray[i] = array;
         }
 
@@ -161,19 +161,19 @@ public class ArraysTheme {
         // Создадим одномерный массив с суммами элементов подмассивов
         int[] sumArray = new int[SUBARRAY_COUNT];
         for (int i = 0; i < SUBARRAY_COUNT; i++) {
-            sumArray[i] = SumArrayElements(irregularArray[i]);
+            sumArray[i] = sumArrayElements(irregularArray[i]);
         }
         System.out.println("\nОдномерный массив, содержащий суммы элементов подмассивов:");
         System.out.println(Arrays.toString(sumArray));
 
-        System.out.println("\nМаксимальная сумма = " + MaxElementArray(sumArray));
-        System.out.println("Минимальная сумма = " + MinElementArray(sumArray));
-        System.out.printf("Среднее значение = %.2f%n", (float) SumArrayElements(sumArray) / SUBARRAY_COUNT);
+        System.out.println("\nМаксимальная сумма = " + maxElementArray(sumArray));
+        System.out.println("Минимальная сумма = " + minElementArray(sumArray));
+        System.out.printf("Среднее значение = %.2f%n", (float) sumArrayElements(sumArray) / SUBARRAY_COUNT);
     }
 
 
     // Генератор массива случайных целых чисел в диапозоне от minValue до maxValue
-    private static int[] BuildRandomIntArray(int arraySize, int minValue, int maxValue, boolean printArray) {
+    private static int[] buildRandomIntArray(int arraySize, int minValue, int maxValue, boolean printArray) {
         Random random = new Random();
         int[] numbers = new int[arraySize];
         for (int i = 0; i < arraySize; i++) {
@@ -189,16 +189,16 @@ public class ArraysTheme {
         return numbers;
     }
 
-    private static int[] BuildRandomIntArray(int arraySize) {
+    private static int[] buildRandomIntArray(int arraySize) {
         int minValue = 0;
         int maxValue = 20;
         boolean printArray = true;
-        return BuildRandomIntArray(arraySize, minValue, maxValue, printArray);
+        return buildRandomIntArray(arraySize, minValue, maxValue, printArray);
     }
 
 
     // Генератор массива слов. Слова выбираются из перечня доступных слов случайным образом
-    private static String[] BuildStringArray(int arraySize, boolean printArray) {
+    private static String[] buildStringArray(int arraySize, boolean printArray) {
         String[] availableWordsDictionary = {"ад", "пол", "сок", "емкость", "собака", "обед", "возница",
                 "наручник", "мел", "дневник", "кран", "ноготь", "овечка", "сани", "карточка", "империя",
                 "фирма", "алебарда", "икона", "бал", "каракуль", "витамин", "ворона", "макет", "косынка",
@@ -222,22 +222,21 @@ public class ArraysTheme {
         return wordsArray;
     }
 
-    private static String[] BuildStringArray(int arraySize) {
+    private static String[] buildStringArray(int arraySize) {
         boolean printArray = true;
-        return BuildStringArray(arraySize, printArray);
+        return buildStringArray(arraySize, printArray);
     }
 
 
     // Генератор матрицы, заполненной случайными числами от minValue до maxValue
-    private static int[][] BuildRandomIntMatrix(int rows, int cols, int minValue, int maxValue, boolean printArray) {
+    private static int[][] buildRandomIntMatrix(int rows, int cols, int minValue, int maxValue, boolean printArray) {
         int[][] numbers = new int[rows][cols];
         for (int i = 0; i < rows; i++) {
-            numbers[i] = BuildRandomIntArray(cols, minValue, maxValue, false);
+            numbers[i] = buildRandomIntArray(cols, minValue, maxValue, false);
         }
 
         if (printArray) {
             System.out.printf("Созданный массив размером %dx%d:%n", rows, cols);
-//            System.out.println(Arrays.deepToString(numsArray)); // Вывод двумерного массива в одну строку
             for (int[] row : numbers) {
                 System.out.println(Arrays.toString(row));
             }
@@ -245,16 +244,16 @@ public class ArraysTheme {
         return numbers;
     }
 
-    private static int[][] BuildRandomIntMatrix(int rows, int cols) {
+    private static int[][] buildRandomIntMatrix(int rows, int cols) {
         int minValue = 0;
         int maxValue = 50;
         boolean printArray = true;
-        int[][] numbers = BuildRandomIntMatrix(rows, cols, minValue, maxValue, printArray);
+        int[][] numbers = buildRandomIntMatrix(rows, cols, minValue, maxValue, printArray);
         return numbers;
     }
 
     // Математические функции
-    private static int SumArrayElements(int[] array) {
+    private static int sumArrayElements(int[] array) {
         int sumElements = 0;
         for (int number : array) {
             sumElements += number;
@@ -262,7 +261,7 @@ public class ArraysTheme {
         return sumElements;
     }
 
-    private static int MinElementArray(int[] array) {
+    private static int minElementArray(int[] array) {
         int minElement = array[0];
         for (int number : array) {
             if (minElement > number) {
@@ -272,7 +271,7 @@ public class ArraysTheme {
         return minElement;
     }
 
-    private static int MaxElementArray(int[] array) {
+    private static int maxElementArray(int[] array) {
         int maxElement = array[0];
         for (int number : array) {
             if (maxElement < number) {
