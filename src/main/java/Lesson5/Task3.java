@@ -29,7 +29,7 @@ public class Task3 extends StringTheme {
         // Заполним таблицу
         for (String line : inputData) {
             // Уберем из строки все символы, кроме букв и цифр
-            String alphanumString = line.replaceAll("[^\\da-zA-Zа-яёА-ЯЁ]", "").toLowerCase();
+            String alphanumString = line.replaceAll(ALLOWED_SYMBOLS, "").toLowerCase();
             StringBuilder reverseString = new StringBuilder(alphanumString).reverse();
             String isPalindrome = alphanumString.contentEquals(reverseString) ? "Yes" : "No";
             System.out.printf(template, line, alphanumString, reverseString, isPalindrome);

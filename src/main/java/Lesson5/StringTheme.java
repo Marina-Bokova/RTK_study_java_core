@@ -1,13 +1,12 @@
 package Lesson5;
 
-public class StringTheme {
-    public static final String[] GIVEN_STRINGS = {
+interface TaskData{
+    String[] GIVEN_STRINGS = {
             "Менеджер, программист и тестировщик попали в ДТП, несясь с горы, из-за отказа тормозов",
             "Менеджер предложил сформировать группу обсуждения проблемы с тормозами",
             "Программист предложил проверить каждый винтик",
             "Тестировщик предложил затолкать машину в гору и повторить баг"};
-
-    public static final String[] ADDITIONAL_STRING = {
+    String[] ADDITIONAL_STRING = {
             "Купить 2 апельсина, 4 яблока и 22 виноградинки",
             "",
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
@@ -18,12 +17,14 @@ public class StringTheme {
             "2 + 2 = 5",
             "",
             "Lorem vivamus auctor laoreet metus egestas pretium congue"};
-
-    public static final String VOWELS = "AaEeIiOoUuYyАаЕеЁёИиОоУуЫыЭэЮюЯя";
-    public static final String CONSONANTS = "BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxZz" +
+    String VOWELS = "AaEeIiOoUuYyАаЕеЁёИиОоУуЫыЭэЮюЯя";
+    String CONSONANTS = "BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxZz" +
             "БбВвГгДдЖжЗзЙйКкЛлМмНнПпРрСсТтФфЧхЦцЧчШшЩщ";
+    String ALLOWED_SYMBOLS = "[^\\da-zA-Zа-яёА-ЯЁ]";
+}
 
 
+public class StringTheme implements TaskData{
     public static String findLongestString(String[] data) {
         String longestString = data[0];
         for (String line : data) {

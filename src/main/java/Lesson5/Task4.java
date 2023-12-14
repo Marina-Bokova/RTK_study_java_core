@@ -33,7 +33,6 @@ public class Task4 extends StringTheme {
             System.out.println("Количество букв в строке: " + lettersCount);
             System.out.println("Количество пробелов в строке: " + spacesCount);
             System.out.println("Количество гласных букв в строке: " + vowelsCount);
-
             System.out.println("Строка в верхнем регистре: \"" + line.toUpperCase() + "\"");
             System.out.println("Строка в нижнем регистре: \"" + line.toLowerCase() + "\"");
         }
