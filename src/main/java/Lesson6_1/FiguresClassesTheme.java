@@ -2,13 +2,13 @@ package Lesson6_1;
 
 import java.util.Random;
 
-public class ClassesTheme implements Message {
+public class FiguresClassesTheme implements Message {
     public static void main(String[] args) {
         // Создаем генератор псевдослучайных чисел
         Random r = new Random();
 
         // Создание окружности с помощью конструктора с аргументами
-        System.out.println("1. Создание окружности с помощью конструктора с аргументами и изменение радиуса");
+        System.out.println("\n1. Создание окружности с помощью конструктора с аргументами и изменение радиуса");
         int radius = r.nextInt(20) + 1; // "+ 1" для исключения 0 из возможных значений
         Circle myCircle = new Circle(radius);
         myCircle.printDetails();
