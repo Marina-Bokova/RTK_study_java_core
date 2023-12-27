@@ -1,0 +1,71 @@
+package Lesson6_2;
+
+import org.json.JSONObject;
+
+import java.util.Date;
+
+public class User implements Validate {
+    private final int USER_ID; // Сделаем обязательным, но неизменяемым
+    private String login;
+    private String name;
+    private boolean active = true;
+    private boolean isGroup = false;
+    private final Date creationDate;
+
+    // Обязательные поля добавим в конструктор, остальные будем заполнять вручную
+    public User(int user_id) {
+        this.USER_ID = user_id;
+        creationDate = new Date();
+    }
+
+    public int getUserId() {
+        return USER_ID;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = validateString(login, 255, false);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = validateString(name, 255, false);
+    }
+
+    public boolean getActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public boolean getIsGroup() {
+        return isGroup;
+    }
+
+    public void setIsGroup(boolean isGroup) {
+        this.isGroup = isGroup;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public JSONObject createJson() {
+        JSONObject resultJson = new JSONObject();
+        resultJson.put("user_id", USER_ID);
+        resultJson.put("login", login);
+        resultJson.put("name", name);
+        resultJson.put("active", active);
+        resultJson.put("is_group", isGroup);
+        resultJson.put("creation_date", creationDate);
+        return resultJson;
+    }
+}
