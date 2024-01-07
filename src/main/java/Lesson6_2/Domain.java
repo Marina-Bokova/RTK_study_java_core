@@ -95,6 +95,21 @@ public class Domain implements Validate {
         this.creator = creator;
     }
 
+    public void setCodeAndUrn(String code, String urn) {
+        this.setCode(code);
+        this.setUrn(urn);
+    }
+
+    public void setNameAndDescription(String name, String description) {
+        this.setName(name);
+        this.setDescription(description);
+    }
+
+    public void setEntityAndSystem(boolean entity, boolean system) {
+        this.setEntity(entity);
+        this.setSystem(system);
+    }
+
     public JSONObject createJson() {
         JSONObject resultJson = new JSONObject();
         resultJson.put("id", domainId);

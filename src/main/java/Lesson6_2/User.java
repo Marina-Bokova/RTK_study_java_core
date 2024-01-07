@@ -5,7 +5,7 @@ import org.json.JSONObject;
 import java.util.Date;
 
 public class User implements Validate {
-    private final int USER_ID; // Сделаем обязательным, но неизменяемым
+    private final int userId; // Сделаем обязательным, но неизменяемым
     private String login;
     private String name;
     private boolean active = true;
@@ -13,13 +13,13 @@ public class User implements Validate {
     private final Date creationDate;
 
     // Обязательные поля добавим в конструктор, остальные будем заполнять вручную
-    public User(int user_id) {
-        this.USER_ID = user_id;
+    public User(int userId) {
+        this.userId = userId;
         creationDate = new Date();
     }
 
     public int getUserId() {
-        return USER_ID;
+        return userId;
     }
 
     public String getLogin() {
@@ -58,9 +58,19 @@ public class User implements Validate {
         return creationDate;
     }
 
+    public void setLoginAndName(String login, String name) {
+        this.setLogin(login);
+        this.setName(name);
+    }
+
+    public void setActiveAndGroup(boolean active, boolean isGroup){
+        this.setActive(active);
+        this.setIsGroup(isGroup);
+    }
+
     public JSONObject createJson() {
         JSONObject resultJson = new JSONObject();
-        resultJson.put("user_id", USER_ID);
+        resultJson.put("user_id", userId);
         resultJson.put("login", login);
         resultJson.put("name", name);
         resultJson.put("active", active);

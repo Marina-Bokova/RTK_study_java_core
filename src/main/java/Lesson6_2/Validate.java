@@ -13,13 +13,4 @@ public interface Validate extends InputData {
         }
         return data;
     }
-
-    static boolean customEquals(String parameter1, String parameter2) {
-        if (parameter1 == null && parameter2 == null) {
-            return true;
-        } else if (parameter1 == null || parameter2 == null) {
-            return false;
-        }
-        return parameter1.equals(parameter2);
-    }
 }
