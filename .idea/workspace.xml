@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45b76a96-3c75-4ff0-a55f-516acd1dce83" name="Changes" comment="Add second part of sixth lesson solution: database">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="45b76a96-3c75-4ff0-a55f-516acd1dce83" name="Changes" comment="Update gitignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Lesson6_2/DBClassesTheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Lesson6_2/DBClassesTheme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Lesson6_2/Directory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Lesson6_2/Directory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Lesson6_2/Domain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Lesson6_2/Domain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Lesson6_2/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Lesson6_2/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Lesson6_2/Validate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Lesson6_2/Validate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,6 +121,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Task7" />
         <item itemvalue="Application.Task7" />
       </list>
     </recent_temporary>
@@ -283,7 +278,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703690683172</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Update gitignore">
+      <option name="closed" value="true" />
+      <created>1704642112557</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1704642112557</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -311,7 +314,8 @@
     <MESSAGE value="Add first part of sixth lesson solution: geometric figures" />
     <MESSAGE value="Rename class ClassesTheme to FiguresClassesTheme" />
     <MESSAGE value="Add second part of sixth lesson solution: database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add second part of sixth lesson solution: database" />
+    <MESSAGE value="Update gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update gitignore" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
