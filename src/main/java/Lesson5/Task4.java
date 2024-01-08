@@ -9,32 +9,43 @@ public class Task4 extends StringTheme {
                 System.out.println("\nИсходная строка пустая");
                 continue;
             }
+
+            Task4Result result = getStringParams(line);
+
             System.out.printf("\nИсходная строка: \"%s\"%n", line);
-            int numbersCount = 0;
-            int lettersCount = 0;
-            int spacesCount = 0;
-            int vowelsCount = 0;
-
-            for (int i = 0; i < line.length(); i++) {
-                char targetChar = line.charAt(i);
-                if (Character.isDigit(targetChar)) {
-                    numbersCount++;
-                } else if (Character.isAlphabetic(targetChar)) {
-                    lettersCount++;
-                } else if (targetChar == ' ') {
-                    spacesCount++;
-                }
-                if (VOWELS.contains(String.valueOf(targetChar))) {
-                    vowelsCount++;
-                }
-            }
-
-            System.out.println("Количество цифр в строке: " + numbersCount);
-            System.out.println("Количество букв в строке: " + lettersCount);
-            System.out.println("Количество пробелов в строке: " + spacesCount);
-            System.out.println("Количество гласных букв в строке: " + vowelsCount);
+            System.out.println("Длина строки: " + line.length());
+            System.out.println("Количество цифр в строке: " + result.numbersCount);
+            System.out.println("Количество букв в строке: " + result.lettersCount);
+            System.out.println("Количество пробелов в строке: " + result.spacesCount);
+            System.out.println("Количество гласных букв в строке: " + result.vowelsCount);
             System.out.println("Строка в верхнем регистре: \"" + line.toUpperCase() + "\"");
             System.out.println("Строка в нижнем регистре: \"" + line.toLowerCase() + "\"");
         }
+    }
+
+    public static Task4Result getStringParams(String s) {
+        int numbersCount = 0;
+        int lettersCount = 0;
+        int spacesCount = 0;
+        int vowelsCount = 0;
+
+        if (s == null) {
+            return new Task4Result(numbersCount, lettersCount, spacesCount, vowelsCount);
+        }
+
+        for (int i = 0; i < s.length(); i++) {
+            char targetChar = s.charAt(i);
+            if (Character.isDigit(targetChar)) {
+                numbersCount++;
+            } else if (Character.isAlphabetic(targetChar)) {
+                lettersCount++;
+            } else if (targetChar == ' ') {
+                spacesCount++;
+            }
+            if (VOWELS.contains(String.valueOf(targetChar))) {
+                vowelsCount++;
+            }
+        }
+        return new Task4Result(numbersCount, lettersCount, spacesCount, vowelsCount);
     }
 }
