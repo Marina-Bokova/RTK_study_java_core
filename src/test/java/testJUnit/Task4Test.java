@@ -36,9 +36,9 @@ class Task4Test {
             "123456789",
             "12 3 4 5 6 7 89",
             "1gfg2fg3fr4g5b67u89",
-            "aa12 34567 k89",
+            "(aa12,34567^ k89)",
             "000000000",
-            "0000 00000"
+            "(1:11 11,1111)"
     })
     void testDigitsCount(String s) {
         Assertions.assertEquals(getStringParams(s, TypeParam.DIGIT), 9);
@@ -47,8 +47,8 @@ class Task4Test {
     @ParameterizedTest
     @ValueSource(strings = {
             "Строка",
-            "String",
-            "tik Tak",
+            "(String)",
+            "tik^Tak",
             "aa12bb34cc"
     })
     void testLettersCount(String s) {
