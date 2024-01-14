@@ -1,4 +1,4 @@
-package Lesson7.Test_JUnit;
+package testJUnit;
 
 import Lesson6_1.Circle;
 import org.junit.jupiter.api.Assertions;
