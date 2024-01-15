@@ -13,11 +13,18 @@ public class CircleSteps {
     String type;
     double perimeter;
     double area;
+    IllegalArgumentException error;
+
 
     @Дано("окружность с радиусом {int}")
     public void circleWithGivenRadius(int radius) {
-        this.initialRadius = radius;
-        this.circle = new Circle(initialRadius);
+        try {
+            this.initialRadius = radius;
+            this.circle = new Circle(initialRadius);
+        } catch (IllegalArgumentException e) {
+            error = e;
+        }
+
     }
 
     @Дано("окружность с незаданным радиусом")
@@ -33,7 +40,11 @@ public class CircleSteps {
 
     @Если("задать радиус окружности равным {int}")
     public void setCircleRadiusEqual(int radius) {
-        circle.setRadius(radius);
+        try {
+            circle.setRadius(radius);
+        } catch (IllegalArgumentException e) {
+            error = e;
+        }
     }
 
     @Если("запросить информацию о типе объекта")
@@ -52,7 +63,7 @@ public class CircleSteps {
                 break;
             default:
                 throw new IllegalArgumentException(
-                        "Данный параметр для окружности неопределен." +
+                        "Данный параметр для окружности не определен." +
                                 " Доступные значения: периметр и площадь");
         }
     }
@@ -74,23 +85,23 @@ public class CircleSteps {
     }
 
     @То("параметр {string} должен быть равен {double} с точность {double}")
-    public void calculatedParameterMustBeEqualToAccuracy(String param, double expectedValue, double aaccuracy) {
+    public void calculatedParameterMustBeEqualToAccuracy(String param, double expectedValue, double accuracy) {
         switch (param) {
             case "периметр":
-                Assertions.assertEquals(perimeter, expectedValue, aaccuracy);
+                Assertions.assertEquals(perimeter, expectedValue, accuracy);
                 break;
             case "площадь":
-                Assertions.assertEquals(area, expectedValue, aaccuracy);
+                Assertions.assertEquals(area, expectedValue, accuracy);
                 break;
             default:
-                throw new IllegalArgumentException("Данный параметр для окружности неопределен." +
+                throw new IllegalArgumentException("Данный параметр для окружности не определен." +
                         " Доступные значения: периметр и площадь");
         }
     }
 
-//
-//    @То("должно быть выбрашено исключение {string}")
-//    public void должноБытьВыбрашеноИсключение(String arg0) {
-//    }
+    @То("должно быть выброшено исключение {string}")
+    public void exceptionMustBeThrown(String message) {
+        Assertions.assertNotEquals(error, null);
+        Assertions.assertEquals(error.getMessage(), message);
+    }
 }
-
