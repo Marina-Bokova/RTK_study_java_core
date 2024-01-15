@@ -8,24 +8,24 @@ import io.cucumber.java.ru.То;
 import org.junit.jupiter.api.Assertions;
 
 public class StringSteps {
-    public String string;
-    public TypeParam param;
-    public int actualResult;
-    public int expectedResult;
+    String string;
+    TypeParam param;
+    int actualResult;
+    int expectedResult;
 
     @Дано("{string} с известным количеством проверяемых символов")
-    public void строкаСИзвестнымКоличествомПроверяемыхСимволов(String s) {
+    public void stringWithKnownNumberCharacters(String s) {
         this.string = s;
     }
 
     @Дано("пустая строка")
-    public void пустаяСтрока() {
+    public void emptyString() {
         this.string = "";
     }
 
 
     @Если("вызвать функцию анализа строки для подсчета {string}")
-    public void вызватьФункциюАнализаСтроки(String value) {
+    public void callStringAnalysisFunction(String value) {
         switch (value) {
             case "всех символов":
                 param = TypeParam.LENGTH;
@@ -49,13 +49,13 @@ public class StringSteps {
     }
 
     @Если("вызвать функцию анализа строки для определения длины строки")
-    public void вызватьФункциюАнализаСтрокиДляОпределенияДлиныСтроки() {
+    public void callStringAnalysisFunctionToDetermineStringLength() {
         actualResult = Task4.getStringParams(string, TypeParam.LENGTH);
     }
 
 
     @То("в результате функция должна вернуть {int}")
-    public void вРезультатеФункцияДолжнаВернуть(int expectedResult) {
+    public void FunctionMustReturn(int expectedResult) {
         this.expectedResult = expectedResult;
         Assertions.assertEquals(actualResult, expectedResult);
     }
