@@ -5,13 +5,15 @@ import Lesson5.TypeParam;
 import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.То;
+import lombok.Getter;
 import org.junit.jupiter.api.Assertions;
 
+@Getter
 public class StringSteps {
-    String string;
-    TypeParam param;
-    int actualResult;
-    int expectedResult;
+    private String string;
+    private TypeParam param;
+    private int actualResult;
+    private int expectedResult;
 
     @Дано("{string} с известным количеством проверяемых символов")
     public void stringWithKnownNumberCharacters(String s) {

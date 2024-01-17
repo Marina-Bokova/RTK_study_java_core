@@ -4,16 +4,18 @@ import Lesson6_1.Circle;
 import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.То;
+import lombok.Getter;
 import org.junit.jupiter.api.Assertions;
 
+@Getter
 public class CircleSteps {
     Circle circle;
-    int initialRadius;
-    int actualRadius;
-    String type;
-    double perimeter;
-    double area;
-    IllegalArgumentException error;
+    private int initialRadius;
+    private int actualRadius;
+    private String type;
+    private double perimeter;
+    private double area;
+    private IllegalArgumentException error;
 
 
     @Дано("окружность с радиусом {int}")
