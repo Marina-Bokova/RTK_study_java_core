@@ -1,6 +1,6 @@
 package testJUnit;
 
-import Lesson5.TypeParam;
+import Lesson5.TypeParamEnum;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -11,12 +11,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static Lesson5.Task4.getStringParams;
 
 class Task4Test {
+    // Смоук проверка основного функционала метода: проверка расчета параметра каждого типа
     @Tag("SMOKE")
     @ParameterizedTest
-    @EnumSource(ForSmokeTest.class)
-    void TestGetStringParams(ForSmokeTest testdata) {
+    @EnumSource(DataForTestEnum.class)
+    void TestGetStringParams(DataForTestEnum testdata) {
         String s = testdata.getString();
-        TypeParam param = testdata.getParam();
+        TypeParamEnum param = testdata.getParam();
         int result = testdata.getResult();
         String message = testdata.getMessage();
 
@@ -24,8 +25,8 @@ class Task4Test {
     }
 
     @ParameterizedTest
-    @EnumSource(TypeParam.class)
-    void EmptyString(TypeParam param) {
+    @EnumSource(TypeParamEnum.class)
+    void EmptyString(TypeParamEnum param) {
         String s = "";
 
         Assertions.assertEquals(getStringParams(s, param), 0);
@@ -41,7 +42,7 @@ class Task4Test {
             "(1:11 11,1111)"
     })
     void testDigitsCount(String s) {
-        Assertions.assertEquals(getStringParams(s, TypeParam.DIGIT), 9);
+        Assertions.assertEquals(getStringParams(s, TypeParamEnum.DIGIT), 9);
     }
 
     @ParameterizedTest
@@ -52,7 +53,7 @@ class Task4Test {
             "aa12bb34cc"
     })
     void testLettersCount(String s) {
-        Assertions.assertEquals(getStringParams(s, TypeParam.LETTER), 6);
+        Assertions.assertEquals(getStringParams(s, TypeParamEnum.LETTER), 6);
     }
 
     @ParameterizedTest
@@ -63,7 +64,7 @@ class Task4Test {
             "String   "
     })
     void testSpacesCount(String s) {
-        Assertions.assertEquals(getStringParams(s, TypeParam.SPACE), 3);
+        Assertions.assertEquals(getStringParams(s, TypeParamEnum.SPACE), 3);
     }
 
     @ParameterizedTest
@@ -73,12 +74,12 @@ class Task4Test {
             "UuИи"
     })
     void testVowelsCount(String s) {
-        Assertions.assertEquals(getStringParams(s, TypeParam.VOWEL), 4);
+        Assertions.assertEquals(getStringParams(s, TypeParamEnum.VOWEL), 4);
     }
 
     @Test
     void testLength() {
         String s = "  Проверка определения длины строки  ";
-        Assertions.assertEquals(getStringParams(s, TypeParam.LENGTH), 37);
+        Assertions.assertEquals(getStringParams(s, TypeParamEnum.LENGTH), 37);
     }
 }

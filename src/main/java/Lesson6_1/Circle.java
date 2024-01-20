@@ -1,5 +1,8 @@
 package Lesson6_1;
 
+import lombok.Getter;
+
+@Getter
 public class Circle implements FigureInterface {
     private int radius; // радиус окружности
 
@@ -8,10 +11,6 @@ public class Circle implements FigureInterface {
 
     public Circle(int radius) {
         this.radius = validate(radius);
-    }
-
-    public int getRadius() {
-        return radius;
     }
 
     public void setRadius(int radius) {

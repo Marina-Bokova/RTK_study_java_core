@@ -3,7 +3,7 @@ package Lesson5;
 import lombok.Getter;
 
 @Getter
-public enum TypeParam {
+public enum TypeParamEnum {
     LENGTH("length"),
     DIGIT("digit"),
     LETTER("letter"),
@@ -12,7 +12,7 @@ public enum TypeParam {
 
     private final String value;
 
-    TypeParam(String value) {
+    TypeParamEnum(String value) {
         this.value = value;
     }
 }

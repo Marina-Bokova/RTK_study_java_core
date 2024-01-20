@@ -9,40 +9,55 @@ public class Task4 extends StringTheme {
                 System.out.println("\nИсходная строка пустая");
                 continue;
             }
-
-            System.out.printf("\nИсходная строка: \"%s\"%n", line);
-            System.out.println("Длина строки: " + getStringParams(line, TypeParam.LENGTH));
-            System.out.println("Количество цифр в строке: " + getStringParams(line, TypeParam.DIGIT));
-            System.out.println("Количество букв в строке: " + getStringParams(line, TypeParam.LETTER));
-            System.out.println("Количество пробелов в строке: " + getStringParams(line, TypeParam.SPACE));
-            System.out.println("Количество гласных букв в строке: " + getStringParams(line, TypeParam.VOWEL));
+            printAllParams(line);
             System.out.println("Строка в верхнем регистре: \"" + line.toUpperCase() + "\"");
             System.out.println("Строка в нижнем регистре: \"" + line.toLowerCase() + "\"");
         }
     }
 
-    public static int getStringParams(String s, TypeParam param) {
+    public static int getStringParams(String s, TypeParamEnum param) {
         if (s == null || s.isEmpty()) {
             return 0;
         }
 
-        if (param.equals(TypeParam.LENGTH)) {
+        if (param.equals(TypeParamEnum.LENGTH)) {
             return s.length();
         }
 
         int count = 0;
         for (int i = 0; i < s.length(); i++) {
             char targetChar = s.charAt(i);
-            if (param.equals(TypeParam.DIGIT) && Character.isDigit(targetChar)) {
+            if (param.equals(TypeParamEnum.DIGIT) && Character.isDigit(targetChar)) {
                 count++;
-            } else if (param.equals(TypeParam.LETTER) && Character.isAlphabetic(targetChar)) {
+            } else if (param.equals(TypeParamEnum.LETTER) && Character.isAlphabetic(targetChar)) {
                 count++;
-            } else if (param.equals(TypeParam.SPACE) && targetChar == ' ') {
+            } else if (param.equals(TypeParamEnum.SPACE) && targetChar == ' ') {
                 count++;
-            } else if (param.equals(TypeParam.VOWEL) && VOWELS.contains(String.valueOf(targetChar))) {
+            } else if (param.equals(TypeParamEnum.VOWEL) && VOWELS.contains(String.valueOf(targetChar))) {
                 count++;
             }
         }
         return count;
+    }
+
+    public static void printAllParams(String string){
+        String[] messages = {"Длина строки: ",
+                "Количество цифр в строке: ",
+                "Количество букв в строке: ",
+                "Количество пробелов в строке: ",
+                "Количество гласных букв в строке: "};
+
+        TypeParamEnum[] params = {TypeParamEnum.LENGTH,
+                TypeParamEnum.DIGIT,
+                TypeParamEnum.LETTER,
+                TypeParamEnum.SPACE,
+                TypeParamEnum.VOWEL};
+
+        StringBuilder result = new StringBuilder(String.format("%nИсходная строка: \"%s\"%n", string));
+
+        for (int i = 0; i < messages.length; i++) {
+            result.append(messages[i]).append(getStringParams(string, params[i])).append("\n");
+        }
+        System.out.println(result);
     }
 }

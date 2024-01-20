@@ -30,7 +30,7 @@ public interface InputData {
     Date VERSION_DATE_1 = new Date(2022, Calendar.APRIL, 25, 14, 53, 33);
     boolean EXTERNAL = true;
     boolean PUBLISHED_2 = true;
-    PublishType publishType_1 = PublishType.VERSION;
+    PublishTypeEnum publishType_1 = PublishTypeEnum.VERSION;
 
     // Сообщения об ошибках
     String LENGTH_ERROR_MESSAGE = "ERROR: Длина строки не должна превышать 255 символов";

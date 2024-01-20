@@ -1,9 +1,11 @@
 package Lesson6_2;
 
+import lombok.Getter;
 import org.json.JSONObject;
 
 import java.util.Date;
 
+@Getter
 public class Directory implements Validate {
     private final int directoryId; // Сделаем обязательным, но неизменяемым
     private Domain domain;
@@ -21,7 +23,7 @@ public class Directory implements Validate {
     private User creator;
     private boolean external = false;
     private boolean published = true;
-    private PublishType publishType = PublishType.NONE;
+    private PublishTypeEnum publishType = PublishTypeEnum.NONE;
 
 
     // Обязательные поля добавим в конструктор, остальные будем заполнять вручную
@@ -37,10 +39,6 @@ public class Directory implements Validate {
         updateDate = new Date();
     }
 
-    public int getDirectoryId() {
-        return directoryId;
-    }
-
     public String getDomain() {
         return domain.createJson().toString();
     }
@@ -50,17 +48,9 @@ public class Directory implements Validate {
         refreshUpdateDate();
     }
 
-    public String getBaseName() {
-        return baseName;
-    }
-
     public void setBaseName(String baseName) {
         this.baseName = validateString(baseName, 255, true);
         refreshUpdateDate();
-    }
-
-    public String getTableName() {
-        return tableName;
     }
 
     public void setTableName(String tableName) {
@@ -68,17 +58,9 @@ public class Directory implements Validate {
         refreshUpdateDate();
     }
 
-    public String getSeqName() {
-        return seqName;
-    }
-
     public void setSeqName(String seqName) {
         this.seqName = validateString(seqName, 255, false);
         refreshUpdateDate();
-    }
-
-    public String getSource() {
-        return source;
     }
 
     public void setSource(String source) {
@@ -86,17 +68,9 @@ public class Directory implements Validate {
         refreshUpdateDate();
     }
 
-    public String getCode() {
-        return code;
-    }
-
     public void setCode(String code) {
         this.code = validateString(code, 255, false);
         refreshUpdateDate();
-    }
-
-    public String getUrn() {
-        return urn;
     }
 
     public void setUrn(String urn) {
@@ -104,34 +78,14 @@ public class Directory implements Validate {
         refreshUpdateDate();
     }
 
-    public String getShortName() {
-        return shortName;
-    }
-
     public void setShortName(String shortName) {
         this.shortName = validateString(shortName, 255, false);
         refreshUpdateDate();
     }
 
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
     public void setVersion(String version) {
         this.version = validateString(version, 255, false);
         refreshUpdateDate();
-    }
-
-    public Date getVersionDate() {
-        return versionDate;
     }
 
     public void setVersionDate(Date versionDate) {
@@ -170,7 +124,7 @@ public class Directory implements Validate {
         return publishType.getValue();
     }
 
-    public void setPublishType(PublishType publishType) {
+    public void setPublishType(PublishTypeEnum publishType) {
         this.publishType = publishType;
         refreshUpdateDate();
     }
@@ -185,7 +139,7 @@ public class Directory implements Validate {
         this.setUrn(urn);
     }
 
-    public void setPublishTypeAndVersion(PublishType publishType, String version, Date versionDate) {
+    public void setPublishTypeAndVersion(PublishTypeEnum publishType, String version, Date versionDate) {
         this.setPublishType(publishType);
         this.setVersion(version);
         this.setVersionDate(versionDate);

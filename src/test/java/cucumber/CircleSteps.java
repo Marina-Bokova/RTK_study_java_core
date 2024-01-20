@@ -19,6 +19,7 @@ public class CircleSteps {
 
 
     @Дано("окружность с радиусом {int}")
+    // При попытке создать окружность с радиусом <= 0, поймаем выброшенное исключение
     public void circleWithGivenRadius(int radius) {
         try {
             this.initialRadius = radius;
@@ -41,6 +42,7 @@ public class CircleSteps {
     }
 
     @Если("задать радиус окружности равным {int}")
+    // При попытке создать окружность с радиусом <= 0, поймаем выброшенное исключение
     public void setCircleRadiusEqual(int radius) {
         try {
             circle.setRadius(radius);
@@ -55,6 +57,8 @@ public class CircleSteps {
     }
 
     @Если("вычислить {string} окружности")
+    // Проверяемый метод может рассчитать периметр и площадь окружности,
+    // в остальных случаях будет выброшено исключение
     public void calculateParameterCircle(String param) {
         switch (param) {
             case "периметр":

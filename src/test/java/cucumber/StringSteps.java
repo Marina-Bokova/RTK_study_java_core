@@ -1,7 +1,7 @@
 package cucumber;
 
 import Lesson5.Task4;
-import Lesson5.TypeParam;
+import Lesson5.TypeParamEnum;
 import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.То;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Assertions;
 @Getter
 public class StringSteps {
     private String string;
-    private TypeParam param;
+    private TypeParamEnum param;
     private int actualResult;
     private int expectedResult;
 
@@ -27,22 +27,23 @@ public class StringSteps {
 
 
     @Если("вызвать функцию анализа строки для подсчета {string}")
+    // Если будет указан неверный параметр, то тест выбросит исключение
     public void callStringAnalysisFunction(String value) {
         switch (value) {
             case "всех символов":
-                param = TypeParam.LENGTH;
+                param = TypeParamEnum.LENGTH;
                 break;
             case "цифр":
-                param = TypeParam.DIGIT;
+                param = TypeParamEnum.DIGIT;
                 break;
             case "букв":
-                param = TypeParam.LETTER;
+                param = TypeParamEnum.LETTER;
                 break;
             case "пробелов":
-                param = TypeParam.SPACE;
+                param = TypeParamEnum.SPACE;
                 break;
             case "гласных":
-                param = TypeParam.VOWEL;
+                param = TypeParamEnum.VOWEL;
                 break;
             default:
                 throw new IllegalArgumentException("Некорректное значение параметра");
@@ -52,7 +53,7 @@ public class StringSteps {
 
     @Если("вызвать функцию анализа строки для определения длины строки")
     public void callStringAnalysisFunctionToDetermineStringLength() {
-        actualResult = Task4.getStringParams(string, TypeParam.LENGTH);
+        actualResult = Task4.getStringParams(string, TypeParamEnum.LENGTH);
     }
 
 

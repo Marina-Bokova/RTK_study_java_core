@@ -1,17 +1,16 @@
 package Lesson6_2;
 
-public enum PublishType {
+import lombok.Getter;
+
+@Getter
+public enum PublishTypeEnum {
     NONE("NONE"),
     RECORD("RECORD"),
     VERSION("VERSION");
 
     private final String value;
 
-    PublishType(String value) {
+    PublishTypeEnum(String value) {
         this.value = value;
-    }
-
-    public String getValue() {
-        return value;
     }
 }
