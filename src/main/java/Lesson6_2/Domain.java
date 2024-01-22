@@ -1,9 +1,13 @@
 package Lesson6_2;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.json.JSONObject;
 
 import java.util.Date;
 
+@Getter
+@Setter
 public class Domain implements Validate {
     private final int domainId; // Сделаем обязательным, но неизменяемым
     private String code;
@@ -23,76 +27,28 @@ public class Domain implements Validate {
         creationDate = new Date();
     }
 
-    public int getDomainId() {
-        return domainId;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
     public void setCode(String code) {
         this.code = validateString(code, 31, false);
-    }
-
-    public String getSchema() {
-        return schema;
     }
 
     public void setSchema(String schema) {
         this.schema = validateString(schema, 32, true);
     }
 
-    public String getUrn() {
-        return urn;
-    }
-
     public void setUrn(String urn) {
         this.urn = validateString(urn, 255, false);
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {
         this.name = validateString(name, 255, false);
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public void setDescription(String description) {
         this.description = validateString(description, 1023, false);
     }
 
-    public boolean getEntity() {
-        return entity;
-    }
-
-    public void setEntity(boolean entity) {
-        this.entity = entity;
-    }
-
-    public boolean getSystem() {
-        return system;
-    }
-
-    public void setSystem(boolean system) {
-        this.system = system;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
     public String getCreator() {
         return creator.createJson().toString();
-    }
-
-    public void setCreator(User creator) {
-        this.creator = creator;
     }
 
     public void setCodeAndUrn(String code, String urn) {

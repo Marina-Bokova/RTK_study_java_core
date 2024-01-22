@@ -1,5 +1,8 @@
 package Lesson6_1;
 
+import lombok.Getter;
+
+@Getter
 public class Rectangle implements FigureInterface {
     // Стороны прямоугольника
     private int length;
@@ -13,16 +16,8 @@ public class Rectangle implements FigureInterface {
         this.width = validate(width);
     }
 
-    public int getLength() {
-        return length;
-    }
-
     public void setLength(int length) {
         this.length = validate(length);
-    }
-
-    public int getWidth() {
-        return width;
     }
 
     public void setWidth(int width) {
